@@ -7,10 +7,10 @@ M.util = {
     empty_dict = vim.g.dein_snip_func_util_empty_dict
 }
 
--- dein#min#load_state(base_path: string)
-M.load_state = function(base_path)
-    base_path = fnamemodify(base_path, ':p')
-    return call('dein#min#load_state', base_path)
+-- dein#add(repo: string, [options: dict])
+M.add = function(repo, options)
+    options = options or M.util.empty_dict
+    return call('dein#parse#_add', repo, options, false)
 end
 
 -- dein#begin(base_path: string, [vimrcs: list])
@@ -28,9 +28,10 @@ M.end0 = function()
     return call('dein#util#_end')
 end
 
--- dein#save_state()
-M.save_state = function()
-    return call('dein#util#_save_state', vim.fn.has('vim_starting'))
+-- dein#min#load_state(base_path: string)
+M.load_state = function(base_path)
+    base_path = fnamemodify(base_path, ':p')
+    return call('dein#min#load_state', base_path)
 end
 
 -- dein#load_toml(filename: string, [options: dict])
@@ -48,10 +49,11 @@ M.local0 = function(directory, options, names)
     return call('dein#parse#_local', directory, options, names)
 end
 
--- dein#add(repo: string, [options: dict])
-M.add = function(repo, options)
-    options = options or M.util.empty_dict
-    return call('dein#parse#_add', repo, options, false)
+-- dein#save_state()
+M.save_state = function()
+    return call('dein#util#_save_state', vim.fn.has('vim_starting'))
 end
+
+
 
 return M
