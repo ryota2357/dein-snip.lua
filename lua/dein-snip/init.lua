@@ -23,7 +23,6 @@ M.setup = function(config)
     end
     if not string.match(vim.o.runtimepath, '/dein.vim') then
         if vim.fn.isdirectory(config.path.dein) == 0 then
-            print('enter')
             os.execute('git clone https://github.com/Shougo/dein.vim ' .. config.path.dein)
         end
         vim.opt.runtimepath:prepend(config.path.dein)
