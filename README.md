@@ -17,6 +17,7 @@ The wrapper plugin of [dein.vim](https://github.com/Shougo/dein.vim).
 | `g:dein#inline_vimrc`                   | `load.vim`                       |
 | `g:dein#install_check_diff`             | `install.check_diff`             |
 | `g:dein#install_check_remote_threshold` | `install.check_remote_threshold` |
+| `g:dein#install_copy_vim`               | `install.copy_vim`               |
 | `g:dein#install_github_api_token`       | `install.github_api_token`       |
 | `g:dein#install_max_processes`          | `install.max_processes`          |
 | `g:dein#install_process_timeout`        | `install.process_timeout`        |

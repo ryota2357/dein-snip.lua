@@ -40,6 +40,7 @@ M.setup = function(config)
     if config.install ~= nil then
         g('dein#install_check_diff', config.install.check_diff)
         g('dein#install_check_remote_threshold', config.install.check_remote_threshold)
+        g('dein#install_copy_vim', config.install.copy_vim)
         g('dein#install_github_api_token', config.install.github_api_token)
         g('dein#install_max_processes', config.install.max_processes)
         g('dein#install_process_timeout', config.install.process_timeout)
