@@ -2,7 +2,78 @@
 
 The wrapper plugin of [dein.vim](https://github.com/Shougo/dein.vim).
 
-## dein-variables
+## Setup
+
+1st, clone this repository.
+
+```sh
+$ git clone https://github.com/ryota2357/dein-snip.lua
+```
+
+2nd, load this plugin in first of init.lua
+
+```lua
+-- init.lua
+vim.opt.runtimepath:prepend(vim.fn.expand('~/Path/To/Cloned/Repo/ryota2357/dein-snip.lua'))
+```
+
+Last, call setup() function.
+
+```lua
+require('dein-snip').setup()
+```
+
+For more details, please read [help](doc/dein-snip.txt)
+
+## Example
+
+```lua
+require('dein-snip').setup {
+    load = {
+        vim = {
+            '~/dotfiles/vim/rc/option.rc.vim',
+            '~/dotfiles/vim/rc/maping.rc.vim'
+        },
+        toml = {
+            { '~/dotfiles/vim/rc/dein.toml' },
+            { '~/dotfiles/vim/rc/dein-lazy.toml', { lazy = true } }
+        },
+        raw = {
+            { 'vim-jp/vimdoc-ja', { hook_add = 'set helplang=ja,en' } }
+        }
+    },
+    notification = {
+        enable = true,
+        time = 3000
+    },
+    auto_recache = true
+}
+```
+
+## Correspondence Table
+
+### Functions
+
+You don't have to call dein's functions.  
+Based on your configuation setted in dein-snip.setup(), dein's functions are automatically called.
+
+If you want to call a dein function, you should use vim.call() or vim.cmd().  
+However, the plugin defines wrappers for some dein functions, so you can use those as well.
+
+| dein-functions                                | require('dein-snip.func')                                   |
+| :-------------------------------------------- | :---------------------------------------------------------- |
+| `dein#add()`                                  | `add(repo: string, [options: dict])`                        |
+| `dein#begin()`                                | `begin(base_path: string, [vimrcs: list])`                  |
+| `dein#end()`                                  | `end0()`                                                    |
+| `dein#load_state()` / `dein#min#load_state()` | `load_state(base_path: string)`                             |
+| `dein#load_toml()`                            | `load_toml(filename: string, [options: dict])`              |
+| `dein#local()`                                | `local0(directory: string, [options: dict, [names: list]])` |
+| `dein#save_state()`                           | `save_state()`                                              |
+
+### Variables
+
+You can set dein's variables without wrriing vimscript.  
+You can set them in dein-snip.setup().
 
 | dein-variables                          | dein-snip-config                 |
 | :-------------------------------------- | :------------------------------- |
@@ -34,28 +105,3 @@ The wrapper plugin of [dein.vim](https://github.com/Shougo/dein.vim).
 | `g:dein#types#git#default_hub_site`     | `install.git.default_hub_site`   |
 | `g:dein#types#git#default_protocol`     | `install.git.default_protocol`   |
 | `g:dein#types#git#pull_command`         | `install.git.pull_command`       |
-
-## Example
-
-```lua
-require('dein-snip').setup {
-    load = {
-        vim = {
-            '~/dotfiles/vim/rc/option.rc.vim',
-            '~/dotfiles/vim/rc/maping.rc.vim'
-        },
-        toml = {
-            { '~/dotfiles/vim/rc/dein.toml' },
-            { '~/dotfiles/vim/rc/dein-lazy.toml', { lazy = true } }
-        },
-        raw = {
-            { 'vim-jp/vimdoc-ja', { hook_add = 'set helplang=ja,en' } }
-        }
-    },
-    notification = {
-        enable = true,
-        time = 3000
-    },
-    auto_recache = true
-}
-```
