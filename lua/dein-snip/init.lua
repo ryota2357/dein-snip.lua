@@ -22,10 +22,11 @@ M.setup = function(config)
         vim.fn.mkdir(config.path.plugins, 'p')
     end
     if not string.match(vim.o.runtimepath, '/dein.vim') then
-        if not vim.fn.isdirectory(config.path.dein) then
+        if vim.fn.isdirectory(config.path.dein) == 0 then
+            print('enter')
             os.execute('git clone https://github.com/Shougo/dein.vim ' .. config.path.dein)
         end
-        vim.o.runtimepath = config.path.dein .. ',' .. vim.o.runtimepath
+        vim.opt.runtimepath:prepend(config.path.dein)
     end
 
     -- set dein global variables
@@ -62,7 +63,6 @@ M.setup = function(config)
     end
 
     -- load plugins
-    -- Note: lua dose not interpret 0 as false
     if dein.load_state(config.path.plugins) == 1 then
         if config.load.vim ~= nil then
             local inline_vim = {}
