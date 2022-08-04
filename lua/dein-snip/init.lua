@@ -10,7 +10,7 @@ config = {
     load = {
         vim               -- dein#inline_vimrcs
         toml              -- dein#load_toml()
-        dir = {           -- dein#local()
+        directory = {     -- dein#local()
             path
             options
             names
@@ -75,12 +75,12 @@ M.setup = function(config)
     -- set dein global variables
     g('dein#auto_recache', config.auto_recache)
     g('dein#auto_remote_plugins', config.auto_remote_plugins)
-    g('cache_directory', config.cache_directory)
-    g('default_options', config.default_options)
-    g('download_command', config.download_command)
-    g('enable_hook_function_cache', config.enable_hook_function_cache)
-    g('enable_name_conversion', config.enable_name_conversion)
-    g('lazy_rplugins', config.lazy_rplugins)
+    g('dein#cache_directory', config.cache_directory)
+    g('dein#default_options', config.default_options)
+    g('dein#download_command', config.download_command)
+    g('dein#enable_hook_function_cache', config.enable_hook_function_cache)
+    g('dein#enable_name_conversion', config.enable_name_conversion)
+    g('dein#lazy_rplugins', config.lazy_rplugins)
     if config.install ~= nil then
         g('dein#install_check_diff', config.install.check_diff)
         g('dein#install_check_remote_threshold', config.install.check_remote_threshold)
@@ -92,10 +92,10 @@ M.setup = function(config)
         g('dein#install_log_filename', config.install.log_filename)
         if config.install.git ~= nil then
             g('dein#types#git#clone_depth', config.install.git.clone_depth)
-            g('dein#types#git#command_path', config.install.command_path)
-            g('dein#types#git#default_hub_site', config.install.default_hub_site)
-            g('dein#types#git#default_protocol', config.install.default_protocol)
-            g('dein#types#git#pull_command', config.install.pull_command)
+            g('dein#types#git#command_path', config.install.git.command_path)
+            g('dein#types#git#default_hub_site', config.install.git.default_hub_site)
+            g('dein#types#git#default_protocol', config.install.git.default_protocol)
+            g('dein#types#git#pull_command', config.install.git.pull_command)
         end
     end
     if config.notification ~= nil then
