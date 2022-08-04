@@ -57,8 +57,8 @@ require('dein-snip').setup {
 You don't have to call dein's functions.  
 Based on your configuation setted in dein-snip.setup(), dein's functions are automatically called.
 
-If you want to call a dein function, you should use vim.call() or vim.cmd().  
-However, the plugin defines wrappers for some dein functions, so you can use those as well.
+If you want to call a dein's function, you should use `vim.call()` or `vim.cmd()`.  
+However, this plugin defines some wrappers, so you can use them too with `require('dein-snip.func')`.
 
 | dein-functions                                | require('dein-snip.func')                                   |
 | :-------------------------------------------- | :---------------------------------------------------------- |
