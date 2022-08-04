@@ -1,54 +1,6 @@
 local dein = require('dein-snip.func')
 local fnamemodify = vim.fn.fnamemodify
 local M = {}
---[[
-config = {
-    path = {
-        plugins           -- plugin's downloaded path
-        dein              -- dein install(ed) path
-        init
-    }
-    load = {
-        vim               -- dein#inline_vimrcs
-        toml              -- dein#load_toml()
-        directory = {     -- dein#local()
-            path
-            options
-            names
-        }
-    }
-    auto_recache
-    auto_remote_plugins
-    cache_directory
-    default_options
-    download_command
-    enable_hook_function_cache
-    enable_name_conversion
-    lazy_rplugins
-    install = {
-        check_diff
-        check_remote_threshold
-        github_api_token
-        max_processes
-        process_timeout
-        progress_type
-        message_type
-        log_filename
-        git = {
-            clone_depth
-            command_path
-            default_hub_site
-            default_protocol
-            pull_command
-        }
-    }
-    notification = {
-        enable
-        icon
-        time
-    }
-}
-]]
 
 local g = function(variable, value)
     if value ~= nil then
