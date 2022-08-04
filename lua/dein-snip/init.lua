@@ -1,5 +1,5 @@
 local dein = require('dein-snip.func')
-local expand = vim.fn.expand
+local fnamemodify = vim.fn.fnamemodify
 local M = {}
 --[[
 config = {
@@ -60,9 +60,9 @@ M.setup = function(config)
     -- set default option values
     config = config or {}
     config.path = config.path or {}
-    config.path.plugins = expand(config.path.plugins or '~/.cache/dein')
-    config.path.dein = expand(config.path.dein or '~/.cache/dein/repos/github.com/Shougo/dein.vim')
-    config.path.init = expand(config.path.init or vim.env.MYVIMRC)
+    config.path.plugins = fnamemodify(config.path.plugins or '~/.cache/dein', ':p')
+    config.path.dein = fnamemodify(config.path.dein or '~/.cache/dein/repos/github.com/Shougo/dein.vim', ':p')
+    config.path.init = fnamemodify(config.path.init or vim.env.MYVIMRC, ':p')
     config.load = config.load or {}
 
     -- setup dein.vim
@@ -114,7 +114,7 @@ M.setup = function(config)
         if config.load.vim ~= nil then
             local inline_vim = {}
             for _, value in ipairs(config.load.vim) do
-                table.insert(inline_vim, expand(value))
+                table.insert(inline_vim, fnamemodify(value, ':p'))
             end
             g('dein#inline_vimrcs', inline_vim)
         end

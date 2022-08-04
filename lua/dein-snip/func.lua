@@ -1,5 +1,5 @@
 local call = vim.call
-local expand = vim.fn.expand
+local fnamemodify = vim.fn.fnamemodify
 local M = {}
 
 vim.cmd('let g:dein_toml_func_util_empty_dict = {}')
@@ -9,16 +9,16 @@ M.util = {
 
 -- dein#min#load_state(base_path: string)
 M.load_state = function(base_path)
-    base_path = expand(base_path)
+    base_path = fnamemodify(base_path, ':p')
     return call('dein#min#load_state', base_path)
 end
 
 -- dein#begin(base_path: string, [vimrcs: list])
 M.begin = function(base_path, vimrcs)
-    base_path = expand(base_path)
+    base_path = fnamemodify(base_path, ':p')
     local go = {}
     for _, value in ipairs(vimrcs) do
-        table.insert(go, expand(value))
+        table.insert(go, fnamemodify(value, ':p'))
     end
     return call('dein#util#_begin', base_path, go)
 end
@@ -35,13 +35,13 @@ end
 
 -- dein#load_toml(filename: string, [options: dict])
 M.load_toml = function(filename, options)
-    filename = expand(filename)
+    filename = fnamemodify(filename, ':p')
     return call('dein#parse#_load_toml', filename, options or M.util.empty_dict)
 end
 
 -- dein#local(directory: string, [options: dict, [names: list]])
 M.local0 = function(directory, options, names)
-    directory = expand(directory)
+    directory = fnamemodify(directory, ':p')
     return call('dein#parse#_local', directory, options or M.util.empty_dict, names or {'*'})
 end
 
