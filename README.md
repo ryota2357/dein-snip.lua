@@ -33,3 +33,28 @@ The wrapper plugin of [dein.vim](https://github.com/Shougo/dein.vim).
 | `g:dein#types#git#default_hub_site`     | `install.git.default_hub_site`   |
 | `g:dein#types#git#default_protocol`     | `install.git.default_protocol`   |
 | `g:dein#types#git#pull_command`         | `install.git.pull_command`       |
+
+## Example
+
+```lua
+require('dein-snip').setup {
+    load = {
+        vim = {
+            '~/dotfiles/vim/rc/option.rc.vim',
+            '~/dotfiles/vim/rc/maping.rc.vim'
+        },
+        toml = {
+            { '~/dotfiles/vim/rc/dein.toml' },
+            { '~/dotfiles/vim/rc/dein-lazy.toml', { lazy = true } }
+        },
+        raw = {
+            { 'vim-jp/vimdoc-ja', { hook_add = 'set helplang=ja,en' } }
+        }
+    },
+    notification = {
+        enable = true,
+        time = 3000
+    },
+    auto_recache = true
+}
+```
