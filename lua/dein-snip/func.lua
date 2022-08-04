@@ -2,9 +2,9 @@ local call = vim.call
 local fnamemodify = vim.fn.fnamemodify
 local M = {}
 
-vim.cmd('let g:dein_toml_func_util_empty_dict = {}')
+vim.cmd('let g:dein_snip_func_util_empty_dict = {}')
 M.util = {
-    empty_dict = vim.g.dein_toml_func_util_empty_dict
+    empty_dict = vim.g.dein_snip_func_util_empty_dict
 }
 
 -- dein#min#load_state(base_path: string)
@@ -36,13 +36,22 @@ end
 -- dein#load_toml(filename: string, [options: dict])
 M.load_toml = function(filename, options)
     filename = fnamemodify(filename, ':p')
-    return call('dein#parse#_load_toml', filename, options or M.util.empty_dict)
+    options = options or M.util.empty_dict
+    return call('dein#parse#_load_toml', filename, options)
 end
 
 -- dein#local(directory: string, [options: dict, [names: list]])
 M.local0 = function(directory, options, names)
     directory = fnamemodify(directory, ':p')
-    return call('dein#parse#_local', directory, options or M.util.empty_dict, names or {'*'})
+    options = options or M.util.empty_dict
+    names = names or { '*' }
+    return call('dein#parse#_local', directory, options, names)
+end
+
+-- dein#add(repo: string, [options: dict])
+M.add = function(repo, options)
+    options = options or M.util.empty_dict
+    return call('dein#parse#_add', repo, options, false)
 end
 
 return M

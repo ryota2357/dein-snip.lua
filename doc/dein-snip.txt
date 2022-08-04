@@ -59,12 +59,25 @@ load		(table)
 			Default: nil
 
 		toml		(list of any)
-			Specify toml file path and options. They are passed
+			Specify toml file path and |dein-options|. They are passed
 			as arguments to |dein#load_toml()|.
 >
 			toml = {
 			    { "~/vim/dein.toml" },
 			    { "~/vim/dein-lazy.toml" { lazy = true } }
+			}
+<
+			Default: nil
+
+		raw		(list of any)
+			Specify the repository URI or local repository directory
+			path and |dein-options|.
+			They are passed as arguments to |dein#add()|
+>
+			raw = {
+			    { "vim-denops/denops.vim" },
+			    { "prettier/vim-prettier", { build = "npm install" } },
+			    { "~/Projects/VimPlugin/foo.vim" }
 			}
 <
 			Default: nil

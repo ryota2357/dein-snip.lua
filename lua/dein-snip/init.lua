@@ -80,6 +80,12 @@ M.setup = function(config)
 
         dein.begin(config.path.plugins, vimrcs)
 
+        if config.load.raw ~= nil then
+            for _, value in ipairs(config.load.raw) do
+                dein.add(value[1], value[2])
+            end
+        end
+
         if config.load.toml ~= nil then
             for _, value in ipairs(config.load.toml) do
                 dein.load_toml(value[1], value[2])
