@@ -1,5 +1,5 @@
 local call = vim.call
-local expand = vim.fm.expand
+local expand = vim.fn.expand
 local M = {}
 
 vim.cmd('let g:dein_toml_func_util_empty_dict = {}')
@@ -16,7 +16,11 @@ end
 -- dein#begin(base_path: string, [vimrcs: list])
 M.begin = function(base_path, vimrcs)
     base_path = expand(base_path)
-    return call('dein#util#_begin', base_path, vimrcs or {})
+    local go = {}
+    for _, value in ipairs(vimrcs) do
+        table.insert(go, expand(value))
+    end
+    return call('dein#util#_begin', base_path, go)
 end
 
 -- dein#end()

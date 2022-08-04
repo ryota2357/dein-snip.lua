@@ -1,4 +1,5 @@
 local dein = require('dein-snip.func')
+local expand = vim.fn.expand
 local M = {}
 --[[
 config = {
@@ -59,12 +60,15 @@ M.setup = function(config)
     -- set default option values
     config = config or {}
     config.path = config.path or {}
-    config.path.plugins = config.path.plugins or '~/.cache/dein'
-    config.path.dein = vim.fn.expand(config.path.dein or '~/.cache/dein/repos/github.com/Shougo/dein.vim')
-    config.path.init = config.path.init or vim.env.MYVIMRC
+    config.path.plugins = expand(config.path.plugins or '~/.cache/dein')
+    config.path.dein = expand(config.path.dein or '~/.cache/dein/repos/github.com/Shougo/dein.vim')
+    config.path.init = expand(config.path.init or vim.env.MYVIMRC)
     config.load = config.load or {}
 
     -- setup dein.vim
+    if not vim.fn.isdirectory(config.path.plugins) then
+        vim.fn.mkdir(config.path.plugins, 'p')
+    end
     if not string.match(vim.o.runtimepath, '/dein.vim') then
         if not vim.fn.isdirectory(config.path.dein) then
             os.execute('git clone https://github.com/Shougo/dein.vim ' .. config.path.dein)
@@ -107,7 +111,13 @@ M.setup = function(config)
     -- load plugins
     -- Note: lua dose not interpret 0 as false
     if dein.load_state(config.path.plugins) == 1 then
-        g('dein#inline_vimrcs', config.load.vim)
+        if config.load.vim ~= nil then
+            local inline_vim = {}
+            for _, value in ipairs(config.load.vim) do
+                table.insert(inline_vim, expand(value))
+            end
+            g('dein#inline_vimrcs', inline_vim)
+        end
 
         local vimrcs = { config.path.init }
         if config.load.toml ~= nil then
