@@ -1,6 +1,6 @@
 # dein-snip
 
-The wrapper plugin of [dein.vim](https://github.com/Shougo/dein.vim).
+The wrapper plugin for [dein.vim](https://github.com/Shougo/dein.vim).
 
 ## Setup
 
