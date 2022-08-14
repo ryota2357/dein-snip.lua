@@ -57,18 +57,20 @@ require('dein-snip').setup {
 You don't have to call dein's functions.  
 Based on your configuation setted in dein-snip.setup(), dein's functions are automatically called.
 
-If you want to call a dein's function, you should use `vim.call()` or `vim.cmd()`.  
+If you want to call a dein's function, you can use `vim.call()` or `vim.cmd()`.  
 However, this plugin defines some wrappers, so you can use them too with `require('dein-snip.func')`.
 
-| dein-functions                                | require('dein-snip.func')                                   |
-| :-------------------------------------------- | :---------------------------------------------------------- |
-| `dein#add()`                                  | `add(repo: string, [options: dict])`                        |
-| `dein#begin()`                                | `begin(base_path: string, [vimrcs: list])`                  |
-| `dein#end()`                                  | `end0()`                                                    |
-| `dein#load_state()` / `dein#min#load_state()` | `load_state(base_path: string)`                             |
-| `dein#load_toml()`                            | `load_toml(filename: string, [options: dict])`              |
-| `dein#local()`                                | `local0(directory: string, [options: dict, [names: list]])` |
-| `dein#save_state()`                           | `save_state()`                                              |
+| dein-functions                                    | require('dein-snip.func')                                           |
+| :------------------------------------------------ | :------------------------------------------------------------------ |
+| `dein#add({repo}, [{options}])`                   | `add(repo: string, options: table\|nil)`                            |
+| `dein#begin({base-path}, [{vimrcs}])`             | `begin(base_path: string, vimrcs: list\|nil)`                       |
+| `dein#check_install({plugins})`                   | `check_install(plugins: table\|nil)`                                |
+| `dein#end()`                                      | `end0()`                                                            |
+| `dein#install([{plugins}])`                       | `install(plugins: table\|nil)`                                      |
+| `dein#min#load_state({base-path})`                | `load_state(base_path: string)`                                     |
+| `dein#load_toml({filename}, [{options}])`         | `load_toml(filename: string, options: table\|nil)`                  |
+| `dein#local({directory}, [{options}, [{names}]])` | `local0(directory: string, options: table\|nil, names: table\|nil)` |
+| `dein#save_state()`                               | `save_state()`                                                      |
 
 ### Variables
 
