@@ -16,6 +16,7 @@ M.setup = function(config)
     config.path.dein = fnamemodify(config.path.dein or '~/.cache/dein/repos/github.com/Shougo/dein.vim', ':p')
     config.path.init = fnamemodify(config.path.init or vim.env.MYVIMRC, ':p')
     config.load = config.load or {}
+    config.load.check_install = config.load.check_install or false
 
     -- setup dein.vim
     if not vim.fn.isdirectory(config.path.plugins) then
@@ -94,6 +95,12 @@ M.setup = function(config)
 
         if config.load.directory ~= nil then
             dein.local0(config.load.directory.path, config.load.directory.options, config.load.directory.names)
+        end
+
+        if config.load.check_install then
+            if dein.check_install() == 1 then
+                dein.install()
+            end
         end
 
         dein.end0()

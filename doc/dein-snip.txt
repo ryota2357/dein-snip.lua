@@ -129,6 +129,15 @@ load		(table)
 <
 			Default: nil
 
+		check_install	(boolean)
+			if it is true, install not installed plugins on startup.
+			This feature is same as: >
+				if dein#check_install()
+				  call dein#install()
+				endif
+<
+			Default: false
+
 						*dein-snip-config-dein-variables*
 
 Correspondence between |dein-variables| and |dein-snip-config| is:

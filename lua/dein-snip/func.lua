@@ -40,12 +40,33 @@ M.begin = function(base_path, vimrcs)
     return call('dein#util#_begin', base_path, go)
 end
 
+--- dein#check_install({plugins})
+---   Check {plugins} installation.
+---   If {plugins} are not installed, it will return non-zero.
+---   If {plugins} are invalid, it will return -1.
+---   {plugins} are the plugins name list or the plugin name to check.
+---   If you omit it, dein will check all plugins installation.
+---   Note: You can disable the message by |:silent|.
+---@param plugins table|nil default: {} (list)
+M.check_install = function (plugins)
+    return call('dein#util#_check_install',  plugins or {})
+end
+
 --- dein#end()
 ---   End dein configuration block.
 ---   You must not use the plugins in |dein#begin()| block. If you enable |g:dein#auto_recache|, it executes |dein#recache_runtimepath()| automatically.
 ---   Note: 'runtimepath' is changed after |dein#end()|.
 M.end0 = function()
     return call('dein#util#_end')
+end
+
+--- dein#install([{plugins}])
+---   Install the plugins asynchronously.
+---   {plugins} is the plugins name list.
+---   If you omit it, dein will install all plugins.
+---@param plugins table|nil default: {} (list)
+M.install = function (plugins)
+    return call('dein#install#_update', plugins or {}, 'install', call('dein#install#_is_async'))
 end
 
 --- dein#min#load_state({base-path})
