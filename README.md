@@ -40,7 +40,8 @@ require('dein-snip').setup {
         },
         raw = {
             { 'vim-jp/vimdoc-ja', { hook_add = 'set helplang=ja,en' } }
-        }
+        },
+        check_install = true
     },
     notification = {
         enable = true,

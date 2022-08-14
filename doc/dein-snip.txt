@@ -173,9 +173,39 @@ Correspondence between |dein-variables| and |dein-snip-config| is:
 	g:dein#types#git#default_protocol	install.git.default_protocol
 	g:dein#types#git#pull_command		install.git.pull_command
 <
+==============================================================================
+EXAMPLES						*dein-snip-examples*
+>
+	-- Add dein-snip.lua to runtimepath.
+	vim.opt.runtimepath:prepend(vim.fn.expand('~/.cache/dein/repos/github.com/ryota2357/dein-snip.lua'))
 
+	require('dein-snip').setup {
+	    load = {
+	        vim = {
+	            '~/dotfiles/vim/rc/option.rc.vim',
+	            '~/dotfiles/vim/rc/maping.rc.vim'
+	        },
+	        toml = {
+	            { '~/dotfiles/vim/rc/dein.toml' },
+	            { '~/dotfiles/vim/rc/dein-lazy.toml', { lazy = true } }
+	        },
+	        raw = {
+	            { 'vim-jp/vimdoc-ja', { hook_add = 'set helplang=ja,en' } }
+	        },
+	        check_install = true
+	    },
+	    notification = {
+	        enable = true,
+	        time = 3000
+	    },
+	    auto_recache = true
+	}
+<
 ==============================================================================
 CHANGELOG						*dein-snip-changelog*
+
+2022.08.14
+* Add new key, check_install, to |dein-snip-config-load|.
 
 2022.08.04
 * Create plugin.
