@@ -83,13 +83,21 @@ M.setup = function(config)
 
         if config.load.raw ~= nil then
             for _, value in ipairs(config.load.raw) do
-                dein.add(value[1], value[2])
+                if type(value) == 'string' then
+                    dein.add(value)
+                else
+                    dein.add(value[1], value[2])
+                end
             end
         end
 
         if config.load.toml ~= nil then
             for _, value in ipairs(config.load.toml) do
-                dein.load_toml(value[1], value[2])
+                if type(value) == 'string' then
+                    dein.load_toml(value)
+                else
+                    dein.load_toml(value[1], value[2])
+                end
             end
         end
 
