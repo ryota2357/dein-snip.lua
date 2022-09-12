@@ -2,13 +2,13 @@ local dein = require('dein-snip.func')
 local fnamemodify = vim.fn.fnamemodify
 local M = {}
 
-local g = function(variable, value)
+local function g(variable, value)
     if value ~= nil then
         vim.g[variable] = value
     end
 end
 
-M.setup = function(config)
+function M.setup(config)
     -- set default option values
     config = config or {}
     config.path = config.path or {}
