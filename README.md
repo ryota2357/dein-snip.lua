@@ -10,18 +10,39 @@ The wrapper plugin for [dein.vim](https://github.com/Shougo/dein.vim).
 $ git clone https://github.com/ryota2357/dein-snip.lua
 ```
 
-2nd, load this plugin in first of init.lua
+2nd, load this plugin at the top of init.lua.
 
 ```lua
 -- init.lua
-vim.opt.runtimepath:prepend(vim.fn.expand('~/Path/To/Cloned/Repo/ryota2357/dein-snip.lua'))
+vim.opt.runtimepath:prepend(vim.fn.expand('~/path/to/dein-snip.lua'))
 ```
+
+<details>
+<summary>How to auto-install and load dein-snip.lua. </summary>
+
+If you have not set `path` in `setup()` or are using the default settings, the following script is good for you.
+
+For `path`, please read `:help dein-snip-config-path`.
+
+```lua
+local dein_snip = vim.fn.fnamemodify('~/.cache/dein/repos/github.com/ryota2357/dein-snip.lua', ':p')
+if not string.match(vim.o.runtimepath, '/dein-snip.lua') then
+    if vim.fn.isdirectory(dein_snip) == 0 then
+        os.execute('git clone https://github.com/ryota2357/dein-snip.lua.git ' .. dein_snip)
+    end
+    vim.opt.runtimepath:prepend(dein_snip)
+end
+```
+
+</details>
 
 Last, call setup() function.
 
 ```lua
 require('dein-snip').setup()
 ```
+
+**NOTE**: You don't have to install or load dein.vim. dein-snip.lua automatically install dein.vim and add it to runtimepath.
 
 For more details, please read [help](doc/dein-snip.txt)
 
