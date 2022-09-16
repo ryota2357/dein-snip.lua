@@ -75,7 +75,11 @@ function M.setup(config)
         local vimrcs = { config.path.init }
         if config.load.toml ~= nil then
             for _, value in ipairs(config.load.toml) do
-                table.insert(vimrcs, value[1])
+                if type(value) == 'string' then
+                  table.insert(vimrcs, value)
+                else
+                  table.insert(vimrcs, value[1])
+                end
             end
         end
 
