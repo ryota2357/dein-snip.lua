@@ -53,7 +53,7 @@ require('dein-snip').setup {
     load = {
         vim = {
             '~/dotfiles/vim/rc/option.rc.vim',
-            '~/dotfiles/vim/rc/maping.rc.vim'
+            '~/dotfiles/vim/rc/mapping.rc.vim'
         },
         toml = {
             '~/dotfiles/vim/rc/dein.toml',
