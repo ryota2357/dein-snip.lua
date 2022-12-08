@@ -66,7 +66,7 @@ end
 ---   If you omit it, dein will install all plugins.
 ---@param plugins table|nil default: {} (list)
 M.install = function (plugins)
-    return call('dein#install#_update', plugins or {}, 'install', call('dein#install#_is_async'))
+    return call('dein#install#_do', plugins or {}, 'install', call('dein#install#_is_async'))
 end
 
 --- dein#min#load_state({base-path})
@@ -105,7 +105,7 @@ M.local0 = function(directory, options, names)
     directory = fnamemodify(directory, ':p')
     options = options or M.util.empty_dict
     names = names or { '*' }
-    -- return call('dein#parse#_local', directory, options, names)
+    return call('dein#parse#_local', directory, options, names)
 end
 
 --- dein#save_state()
