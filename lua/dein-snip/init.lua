@@ -54,6 +54,7 @@ function M.setup(config)
             g('dein#types#git#default_hub_site', config.install.git.default_hub_site)
             g('dein#types#git#default_protocol', config.install.git.default_protocol)
             g('dein#types#git#pull_command', config.install.git.pull_command)
+            g('dein#types#git#enable_partial_clone', config.install.git.partial_clone)
         end
     end
     if config.notification ~= nil then

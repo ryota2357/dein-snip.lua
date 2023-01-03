@@ -110,6 +110,7 @@ You can set them in dein-snip.setup().
 | `g:dein#enable_hook_function_cache`     | `enable_hook_function_cache`     |
 | `g:dein#enable_name_conversion`         | `enable_name_conversion`         |
 | `g:dein#enable_notification`            | `notification.enable`            |
+| `g:dein#ftplugin`                       | not support                      |
 | `g:dein#inline_vimrc`                   | `load.vim`                       |
 | `g:dein#install_check_diff`             | `install.check_diff`             |
 | `g:dein#install_check_remote_threshold` | `install.check_remote_threshold` |
@@ -130,3 +131,4 @@ You can set them in dein-snip.setup().
 | `g:dein#types#git#default_hub_site`     | `install.git.default_hub_site`   |
 | `g:dein#types#git#default_protocol`     | `install.git.default_protocol`   |
 | `g:dein#types#git#pull_command`         | `install.git.pull_command`       |
+| `g:dein#types#git#enable_partial_clone` | `install.git.partial_clone`      |
