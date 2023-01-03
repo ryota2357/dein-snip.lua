@@ -1,5 +1,7 @@
 # dein-snip
 
+**dein.vim has lua api (`require('dein')`).**
+
 The wrapper plugin for [dein.vim](https://github.com/Shougo/dein.vim).
 
 ## Setup
