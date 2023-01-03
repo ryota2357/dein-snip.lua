@@ -88,11 +88,11 @@ However, this plugin defines some wrappers, so you can use them too with `requir
 | `dein#add({repo}[, {options}])`                   | `add(repo: string, options: table\|nil)`                            |
 | `dein#begin({base-path}[, {vimrcs}])`             | `begin(base_path: string, vimrcs: list\|nil)`                       |
 | `dein#check_install({plugins})`                   | `check_install(plugins: table\|nil)`                                |
-| `dein#end()`                                      | `end0()`                                                            |
+| `dein#end()`                                      | `end_()`                                                            |
 | `dein#install([{plugins}])`                       | `install(plugins: table\|nil)`                                      |
 | `dein#min#load_state({base-path})`                | `load_state(base_path: string)`                                     |
 | `dein#load_toml({filename}[, {options}])`         | `load_toml(filename: string, options: table\|nil)`                  |
-| `dein#local({directory}[, {options}[, {names}]])` | `local0(directory: string, options: table\|nil, names: table\|nil)` |
+| `dein#local({directory}[, {options}[, {names}]])` | `local_(directory: string, options: table\|nil, names: table\|nil)` |
 | `dein#save_state()`                               | `save_state()`                                                      |
 
 ### Variables

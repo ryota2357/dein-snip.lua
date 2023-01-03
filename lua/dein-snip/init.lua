@@ -106,7 +106,7 @@ function M.setup(config)
         end
 
         if config.load.directory ~= nil then
-            dein.local0(config.load.directory.path, config.load.directory.options, config.load.directory.names)
+            dein.local_(config.load.directory.path, config.load.directory.options, config.load.directory.names)
         end
 
         if config.load.check_install then
@@ -115,7 +115,7 @@ function M.setup(config)
             end
         end
 
-        dein.end0()
+        dein.end_()
         dein.save_state()
     end
 end
